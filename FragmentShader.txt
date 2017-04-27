@@ -1,0 +1,20 @@
+#version 400
+
+uniform sampler2D f_texture;
+
+in vec4 color;
+in vec2 uv;
+
+out vec4 fColor;
+
+void main() 
+{
+	//vec4 lightColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); 
+	//fColor = vec4(0.50f, 0.50f, 0.50f, 1.0f);
+	fColor = texture2D(f_texture, uv);
+	//fColor = color * texture2D(f_texture, uv);
+	//fColor = lightColor * texture2D(f_texture, uv);
+	//fColor = color + texture2D(f_texture, uv);
+	//fColor = color - texture2D(f_texture, uv);
+	//fColor = color;
+}

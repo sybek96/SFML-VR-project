@@ -1,0 +1,23 @@
+#version 400
+
+//layout(location = 0) in vec3 sv_position;
+//layout(location = 1) in vec4 sv_color;
+//layout(location = 2) in vec2 sv_texel;
+
+in vec3 sv_position;
+in vec4 sv_color;
+in vec2 sv_uv;
+
+out vec4 color;
+out vec2 uv;
+
+uniform mat4 sv_mvp;
+
+void main() 
+{
+	color = sv_color;
+	uv = sv_uv;
+	//gl_Position = vec4(sv_position, 1);
+	gl_Position = sv_mvp * vec4(sv_position, 1);
+
+}
