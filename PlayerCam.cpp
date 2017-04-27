@@ -4,6 +4,8 @@
 
 PlayerCam::PlayerCam()
 {
+	count = 0;
+	moveUp = true;
 	// Projection Matrix 
 	projection = glm::perspective(
 		45.0f,					// Field of View 45 degrees
@@ -57,6 +59,24 @@ void PlayerCam::update()
 	{
 		view = rotate(view, 0.02f, glm::vec3(0, 1, 0)); // Rotate
 		view2 = rotate(view2, 0.02f, glm::vec3(0, 1, 0)); // Rotate
+	}
+
+	if (count < 50 && moveUp)
+	{
+		count++;
+		model = glm::translate(model, glm::vec3(0, 0.03, 0));
+		model2 = glm::translate(model2, glm::vec3(0, 0.03, 0));
+	}
+	else if(count >= 1)
+	{
+		moveUp = false;
+		count--;
+		model = glm::translate(model, glm::vec3(0, -0.03, 0));
+		model2 = glm::translate(model2, glm::vec3(0, -0.03, 0));
+		if (count == 0)
+		{
+			moveUp = true;
+		}
 	}
 	// Update Model View Projection
 	// For mutiple objects (cubes) create multiple models

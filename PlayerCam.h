@@ -17,5 +17,7 @@ public:
 		view, model,
 		mvp2, projection2,
 		view2, model2;			// Model View Projection
+	int count;
+	bool moveUp;
 };
 
